@@ -1,1 +1,1 @@
-nslookup slash16.org | head -1
+dig slash16.org +short

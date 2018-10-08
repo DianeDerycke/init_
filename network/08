@@ -1,0 +1,5 @@
+whois slash16.org | grep "Name Server" | head -4
+
+ 
+Grace aux noms des serveurs on peut voir le nom de l'hebergeur qui se trouve 
+etre pour ce cas précis : AWS
