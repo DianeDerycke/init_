@@ -1,5 +1,4 @@
-whois slash16.org | grep "Name Server" | head -4
+whois slash16.org | grep "Name Server" | cut -d ' ' -f3
 
- 
-Grace aux noms des serveurs on peut voir le nom de l'hebergeur qui se trouve 
-etre pour ce cas précis : AWS
+# Grace aux noms des serveurs on peut voir le nom de l'hebergeur qui se trouve 
+# etre pour ce cas précis : AWS (Amazon Web Service) donc Amazon

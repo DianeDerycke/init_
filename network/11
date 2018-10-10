@@ -1,0 +1,5 @@
+traceroute slash16.org | grep "nat"
+
+# nat, Network Address Translation, est ce qui permet de faire le lien entre
+# mon reseau local et l'exterieur, il transforme les adresses IP internes 
+# en adresses IP externes.
