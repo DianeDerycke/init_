@@ -1,0 +1,2 @@
+# Dans le fichier /etc/hosts il faut rajouter "46.19.122.85 intra.42.fr"
+# ainsi le DNS intra.42.fr redirigera vers l'adresse IP 46.19.122.85.
