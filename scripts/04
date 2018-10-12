@@ -1,8 +1,18 @@
 #!/bin/bash
-
-if ! [ -e /etc/org_cron ];then
-	md5sum /etc/crontab > /etc/org_cron;fi
-
-md5sum /etc/crontab > actual_cron && diff /etc/org_cron actual_cron &>/dev/null || echo "Your crontab file has been modified." |  mail -s "!! WARNING CRONTAB !!" derycked@yahoo.fr
-rm actual_cron /etc/org_cron
-md5sum /etc/crontab > /etc/org_cron
+SCRIPT_NAME="./03"
+ORIG_KEY="/org_con"
+ACTUAL_KEY="/actual_cron"
+if ! [ -f "$ORIG_KEY" ]
+then
+	md5sum /etc/crontab > "$ORIG_KEY"
+fi
+touch "$ACTUAL_KEY"
+md5sum /etc/crontab > "$ACTUAL_KEY"
+if [ "$(cat $ACTUAL_KEY)" != "$(cat $ORIG_KEY)" ]
+then
+	echo "Your crontab file has been modified." |  mail -s "!! WARNING CRONTAB !!" root
+fi
+rm "$ACTUAL_KEY" "$ORIG_KEY"
+md5sum /etc/crontab > "$ORIG_KEY"
+chmod 777 "$SCRIPT_NAME"
+#echo "@daily sh $SCRIPT_NAME" | crontab
