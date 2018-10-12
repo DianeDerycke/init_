@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if ! [ -e /etc/org_cron ];then
+	md5sum /etc/crontab > /etc/org_cron;fi
+
+md5sum /etc/crontab > actual_cron && diff /etc/org_cron actual_cron &>/dev/null || echo "Your crontab file has been modified." |  mail -s "!! WARNING CRONTAB !!" derycked@yahoo.fr
+rm actual_cron /etc/org_cron
+md5sum /etc/crontab > /etc/org_cron
